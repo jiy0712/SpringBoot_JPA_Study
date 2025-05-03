@@ -16,7 +16,7 @@ class UserTest {
         user.setUpdatedAt(LocalDateTime.now());
 
         User user1 = new User("s2325", "s2325@e-mirim.hs.kr", LocalDateTime.now(), LocalDateTime.now());
-        User user2 = new User("s2325", "s2325@e-mirim.hs.kr");
+//        User user2 = new User("s2325", "s2325@e-mirim.hs.kr");
         System.out.println(">>> " + user); //이렇게 하면 해시코드로 나온다
         //tostring메소드를 오버라이딩 하는 것이 좋다 (오버라이딩 하면 s2325 나온다)
 
