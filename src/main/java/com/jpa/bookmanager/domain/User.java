@@ -17,7 +17,7 @@ import jakarta.persistence.Id;
 public class User{ //User객체의 pk값 : id
 
     //Entity
-    @id
+    @Id
     @GeneratedValue
     private Long id; //id는 자동으로 증가하는 숫자값
 
