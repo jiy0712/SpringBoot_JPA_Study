@@ -2,11 +2,13 @@ package com.jpa.bookmanager.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.Id;
 
+@Table(name = "users") //예약어 충돌 방지
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
