@@ -1,29 +1,19 @@
-package com.jpa.bookmanager.repository;
+package com.fastcampus.jpa.bookmanager.repository;
 
-import com.jpa.bookmanager.domain.Users;
-import jakarta.transaction.Transactional;
-import org.assertj.core.util.Lists;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
+
+import com.fastcampus.jpa.bookmanager.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 
-import java.util.List;
-import java.util.Optional;
+@Test
+void crud() { // create, read, update, delete
+    User user = new User();
+    user.setEmail("slow");
 
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest //SpringContext를 사용하겠다
-class UserRepositoryTest {
-    @Autowired
-    private UserRepository userRepository;
-
-    @Test
-    @Transactional
-    void crud(){ //create, read, update, delete
-        Optional<Users> user = Optional.ofNullable(userRepository.findById(1L).orElse(null));
-        //Users user = userRepository.getOne(1L);
-        System.out.println(user);
-    }
-
+    ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("email", contains());
+    Example<User> example = Example.of(user, matcher);
 }
