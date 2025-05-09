@@ -1,6 +1,7 @@
 package com.jpa.bookmanager.repository;
 
 import com.jpa.bookmanager.domain.Users;
+import jakarta.transaction.Transactional;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,18 +19,11 @@ class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
+    @Transactional
     void crud(){ //create, read, update, delete
-        Users user1 = new Users("jack", "jack@gmail.com");
-        Users user2 = new Users("jack2", "jack2@gmail.com");
-
-        userRepository.saveAll(Lists.newArrayList(user1,user2));
-        //userRepository.save(user1);
-
-        List<Users> users = userRepository.findAll();
-        users.forEach(System.out::println);
-
-        //List<Users> users = userRepository.findAllById(findAll(Sort.by(Sort.Direction.DESC,"name"));
-        //List<Users> users = userRepository.findAllById(Lists.newArrayList(1L,3L,5L));
+        Optional<Users> user = Optional.ofNullable(userRepository.findById(1L).orElse(null));
+        //Users user = userRepository.getOne(1L);
+        System.out.println(user);
     }
 
 }
