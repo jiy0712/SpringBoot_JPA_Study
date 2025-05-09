@@ -16,7 +16,7 @@ import jakarta.persistence.Id;
 @Builder
 @Entity //pk가 반드시 필요하다는 뜻
 
-public class User{ //User객체의 pk값 : id
+public class Users{ //User객체의 pk값 : id
 
     //Entity
     @Id
